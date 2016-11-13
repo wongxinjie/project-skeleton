@@ -13,9 +13,13 @@ project-name/
     tests/
     README.md
     README.rst
-``
-##### install
 ```
+
+##### install
+create an virtualenv first, then:
+```
+git clone git@github.com:wongxinjie/project-skeleton.git
+cd django-skeleton
 python setup.py
 ```
 
