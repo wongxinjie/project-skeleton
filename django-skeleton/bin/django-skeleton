@@ -1,0 +1,37 @@
+#!/usr/bin/env python
+# coding: utf-8
+import sys
+import argparse
+
+from django_skeleton import (
+    create_project,
+    create_app
+)
+
+
+def custom_args():
+    desc = "django project skeleton creator"
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument('action', type=str, help='create project or app',
+                        choices=['startproject', 'startapp'])
+
+    parser.add_argument('name', type=str)
+
+    return parser
+
+
+if __name__ == "__main__":
+    parser = custom_args()
+    args = parser.parse_args()
+    action = args.action
+    name = args.name
+    if not action or not name:
+        parser.print_help()
+        sys.exit(-1)
+
+    if action == 'startproject':
+        create_project(name)
+    elif action == 'startapp':
+        create_app(name)
+    else:
+        parser.print_help()
